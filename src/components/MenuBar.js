@@ -1,6 +1,6 @@
 import React from "react";
 
-function MenuBar(props) {
+function MenuBar({ displayedItem, handleTabChange }) {
   /*
 
   The 'span' tags below are the menu items. Think about the way a menu 
@@ -12,21 +12,27 @@ function MenuBar(props) {
 
   */
 
+const tabChange = (e) => {
+  if (e.target.className === "item") {
+    return handleTabChange(e)
+  }
+}
+
   return (
     <div className="ui four item menu">
-      <span className="item active">
+      <span onClick={tabChange} id="Profile" className={displayedItem === "Profile" ? "item active" : "item"}>
         <i className="user large icon" />
       </span>
 
-      <span className="item">
+      <span onClick={tabChange} id="Photos" className={displayedItem === "Photos" ? "item active" : "item"}>
         <i className="photo large icon" />
       </span>
 
-      <span className="item">
+      <span onClick={tabChange} id="Cocktails" className={displayedItem === "Cocktails" ? "item active" : "item"}>
         <i className="cocktail large icon" />
       </span>
 
-      <span className="item">
+      <span onClick={tabChange} id="Pokemon" className={displayedItem === "Pokemon" ? "item active" : "item"}>
         <i className=" themeisle large icon" />
       </span>
     </div>
